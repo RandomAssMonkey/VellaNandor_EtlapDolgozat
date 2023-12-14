@@ -6,7 +6,17 @@
         xmlns:local="clr-namespace:EtlapDolgozat"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+	<DockPanel>
+		<StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+			<Button Content="Hozzáad" Width="150"/>
+			<Button Content="Töröl" Width="150"/>
+		</StackPanel>
+		<StackPanel>
 
-    </Grid>
+		</StackPanel>
+		<DataGrid x:Name="etlapTable" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="etlapTable_SelectionChanged" ></DataGrid>
+		<StackPanel>
+			<Label x:Name="etelLabel" Content=""/>
+		</StackPanel>
+	</DockPanel>
 </Window>
