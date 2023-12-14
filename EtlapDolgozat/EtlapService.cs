@@ -47,6 +47,33 @@ namespace EtlapDolgozat
 			return etlap;
 		}
 
+		public bool Delete(int id)
+		{
+			OpenConnection();
+			string sql = $"DELETE FROM etlap WHERE id = @id";
+			MySqlCommand command = connection.CreateCommand();
+			command.CommandText = sql;
+			command.Parameters.AddWithValue("@id", id);
+			int affectedRows = command.ExecuteNonQuery();
+			CloseConnection();
+			return affectedRows == 1;
+		}
+
+		public bool Create(Etel etel)
+		{
+			OpenConnection();
+			string sql = "INSERT INTO etlap(nev,leiras,ar,kategoria) VALUES(@nev,@leiras,@ar,@kategoria)";
+			MySqlCommand command = connection.CreateCommand();
+			command.CommandText = sql;
+			command.Parameters.AddWithValue("@nev", etel.Nev);
+			command.Parameters.AddWithValue("@leiras", etel.Leiras);
+			command.Parameters.AddWithValue("@ar", etel.Ar);
+			command.Parameters.AddWithValue("@kategoria", etel.Kategoria);
+			int affectedRows = command.ExecuteNonQuery();
+			CloseConnection();
+			return affectedRows == 1;
+		}
+
 		private void CloseConnection()
 		{
 			if (connection.State == System.Data.ConnectionState.Open)

@@ -8,15 +8,15 @@
         Title="MainWindow" Height="450" Width="800">
 	<DockPanel>
 		<StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
-			<Button Content="Hozzáad" Width="150"/>
-			<Button Content="Töröl" Width="150"/>
+			<Button Content="Új étel felvétele" Width="150" Click="AddButton_Click"/>
+			<Button Content="Töröl" Width="150" Click="DeleteButton_Click"/>
 		</StackPanel>
-		<StackPanel>
-
-		</StackPanel>
-		<DataGrid x:Name="etlapTable" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="etlapTable_SelectionChanged" ></DataGrid>
-		<StackPanel>
-			<Label x:Name="etelLabel" Content=""/>
+		<DataGrid x:Name="etlapTable" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="etlapTable_SelectionChanged" >
+			<DataGrid.Columns/>
+		</DataGrid>
+		<StackPanel DockPanel.Dock="Right" Orientation="Vertical">
+			<Label x:Name="etelLabel" Content="ITT"/>
+			<TextBox x:Name="tbSzazalek"/>
 		</StackPanel>
 	</DockPanel>
 </Window>
